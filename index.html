@@ -1,28 +1,58 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <style>
-a:hover {
-  background-color: yellow;
+canvas {
+    border: 6px solid #777;
+    background-color:#331;
 }
 </style>
 </head>
-<body>
-
-<h1>Demo of the :hover selector</h1>
-
-<p id="test">The :hover selector style links on mouse-over:</p>
-
-<a href="https://www.w3schools.com">w3schools.com</a>
-<a href="https://www.wikipedia.org">wikipedia.org</a>
+<body onload="start()">
 <script>
 
-let test = document.getElementById("test");
+function start()
+{
+alert('a')
+    myGameArea.start();
+}
 
-test.addEventListener("mouseover", () => {
-test.style.background="green"
-});
+var myGameArea = {
+    canvas : document.createElement("canvas"),
+    start : function() {
+        this.canvas.width = 480;
+        this.canvas.height = 270;
+        this.context = this.canvas.getContext("2d");
+        document.body.insertBefore(this.canvas, document.body.childNodes[0]);
+    }
+}
 
-  </script>
+
+
+
+
+var myGamePiece;
+
+function start() {
+  myGameArea.start();
+  myGamePiece = new component(30, 30, "red", 10, 120);
+}
+
+function component(width, height, color, x, y) {
+  this.width = width;
+  this.height = height;
+  this.x = x;
+  this.y = y;
+  ctx = myGameArea.context;
+  ctx.fillStyle = color;
+  ctx.fillRect(this.x, this.y, this.width, this.height);
+}
+
+
+</script>
+
+<p>We have created a game area! (or at least an empty canvas)</p>
+
 </body>
 </html>
